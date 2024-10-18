@@ -20,20 +20,36 @@ public class Move : MonoBehaviour
     void LeftArrowPressed()
     {
         transform.position += new Vector3(-1, 0, 0);
+        if (Mathf.Abs(transform.position.x) > 8f)
+        {
+            Debug.Log("end");
+        }
     }
 
     void RightArrowPressed()
     {
         transform.position += new Vector3(1, 0, 0);
+        if (Mathf.Abs(transform.position.x) > 8f)
+        {
+            Debug.Log("end");
+        }
     }
 
     void UpArrowPressed()
     {
         transform.position += new Vector3(0, 1, 0);
+        if (Mathf.Abs(transform.position.y) > 4f)
+        {
+            Debug.Log("end");
+        }
     }
 
     void DownArrowPressed()
     {
         transform.position += new Vector3(0, -1, 0);
+        if (Mathf.Abs(transform.position.y) > 4f)
+        {
+            Debug.Log("end");
+        }
     }
 }
