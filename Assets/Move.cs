@@ -19,21 +19,21 @@ public class Move : MonoBehaviour
 
     void LeftArrowPressed()
     {
-        Debug.Log("LeftArrowPressed");
+        transform.position += new Vector3(-1, 0, 0);
     }
 
     void RightArrowPressed()
     {
-        Debug.Log("RightArrowPressed");
+        transform.position += new Vector3(1, 0, 0);
     }
 
     void UpArrowPressed()
     {
-        Debug.Log("UpArrowPressed");
+        transform.position += new Vector3(0, 1, 0);
     }
 
     void DownArrowPressed()
     {
-        Debug.Log("DownArrowPressed");
+        transform.position += new Vector3(0, -1, 0);
     }
 }
