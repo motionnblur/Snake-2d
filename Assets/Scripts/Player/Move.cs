@@ -19,8 +19,8 @@ public class Move : MonoBehaviour
 
     void LeftArrowPressed()
     {
-        transform.position += new Vector3(-1, 0, 0);
-        if (Mathf.Abs(transform.position.x) > 8f)
+        transform.position += new Vector3(-0.4f, 0, 0);
+        if (Mathf.Abs(transform.position.x) > 8.2f)
         {
             Debug.Log("end");
         }
@@ -28,8 +28,8 @@ public class Move : MonoBehaviour
 
     void RightArrowPressed()
     {
-        transform.position += new Vector3(1, 0, 0);
-        if (Mathf.Abs(transform.position.x) > 8f)
+        transform.position += new Vector3(0.4f, 0, 0);
+        if (Mathf.Abs(transform.position.x) > 8.2f)
         {
             Debug.Log("end");
         }
@@ -37,8 +37,8 @@ public class Move : MonoBehaviour
 
     void UpArrowPressed()
     {
-        transform.position += new Vector3(0, 1, 0);
-        if (Mathf.Abs(transform.position.y) > 4f)
+        transform.position += new Vector3(0, 0.4f, 0);
+        if (Mathf.Abs(transform.position.y) > 4.2f)
         {
             Debug.Log("end");
         }
@@ -46,8 +46,8 @@ public class Move : MonoBehaviour
 
     void DownArrowPressed()
     {
-        transform.position += new Vector3(0, -1, 0);
-        if (Mathf.Abs(transform.position.y) > 4f)
+        transform.position += new Vector3(0, -0.4f, 0);
+        if (Mathf.Abs(transform.position.y) > 4.2f)
         {
             Debug.Log("end");
         }
