@@ -15,7 +15,7 @@ public class Pick : MonoBehaviour
     {
         if (col.CompareTag("Apple"))
         {
-            EventManager.TriggerEvent("OnAppleCollected");
+            EventManager.TriggerEvent("OnAppleCollected", col.gameObject);
         }
     }
 }
