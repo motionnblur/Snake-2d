@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LifetimeManager : MonoBehaviour
 {
+    [SerializeField] GameObject body;
     void OnEnable()
     {
         EventManager.AddListener<GameObject>("OnAppleCollected", OnAppleCollected);
@@ -14,6 +15,7 @@ public class LifetimeManager : MonoBehaviour
 
     void OnAppleCollected(GameObject o)
     {
+        Instantiate(body, o.transform.position, Quaternion.identity);
         Destroy(o);
     }
 }
