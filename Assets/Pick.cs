@@ -13,6 +13,9 @@ public class Pick : MonoBehaviour
 
     void TriggerEnter(Collider2D col)
     {
-        Debug.Log("a");
+        if (col.CompareTag("Apple"))
+        {
+            EventManager.TriggerEvent("OnAppleCollected");
+        }
     }
 }
