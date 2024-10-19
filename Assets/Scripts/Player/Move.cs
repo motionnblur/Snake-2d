@@ -11,6 +11,8 @@ public class Move : MonoBehaviour
 {
     public List<GameObject> tails = new List<GameObject>();
     Direction currentDirection;
+    bool isButtonPressing = false;
+    float startTime = 0f;
 
     void Awake()
     {
@@ -22,6 +24,18 @@ public class Move : MonoBehaviour
         InvokeRepeating("MoveSnake", 0f, 0.5f);
     }
 
+    void Update()
+    {
+        if (isButtonPressing)
+        {
+            if (Time.time - startTime > 0.5f)
+            {
+                Time.timeScale = 2.5f;
+                isButtonPressing = false;
+            }
+        }
+    }
+
     void OnEnable()
     {
         EventManager.AddListener("LeftArrowPressed", LeftArrowPressed);
@@ -29,6 +43,7 @@ public class Move : MonoBehaviour
         EventManager.AddListener("UpArrowPressed", UpArrowPressed);
         EventManager.AddListener("DownArrowPressed", DownArrowPressed);
         EventManager.AddListener("OnGameEnd", OnGameEnd);
+        EventManager.AddListener("OnButtonReleased", OnButtonReleased);
     }
     void OnDisable()
     {
@@ -37,6 +52,7 @@ public class Move : MonoBehaviour
         EventManager.RemoveListener("UpArrowPressed", UpArrowPressed);
         EventManager.RemoveListener("DownArrowPressed", DownArrowPressed);
         EventManager.RemoveListener("OnGameEnd", OnGameEnd);
+        EventManager.RemoveListener("OnButtonReleased", OnButtonReleased);
     }
 
     void MoveSnake()
@@ -80,21 +96,29 @@ public class Move : MonoBehaviour
     void LeftArrowPressed()
     {
         currentDirection = Direction.Left;
+        isButtonPressing = true;
+        startTime = Time.time;
     }
 
     void RightArrowPressed()
     {
         currentDirection = Direction.Right;
+        isButtonPressing = true;
+        startTime = Time.time;
     }
 
     void UpArrowPressed()
     {
         currentDirection = Direction.Up;
+        isButtonPressing = true;
+        startTime = Time.time;
     }
 
     void DownArrowPressed()
     {
         currentDirection = Direction.Down;
+        isButtonPressing = true;
+        startTime = Time.time;
     }
 
     Direction GetRandomDirection()
@@ -112,5 +136,12 @@ public class Move : MonoBehaviour
     void OnGameEnd()
     {
         CancelInvoke("MoveSnake");
+    }
+    void OnButtonReleased()
+    {
+        if (!Input.anyKey) isButtonPressing = false;
+
+        if (Time.timeScale != 1f)
+            Time.timeScale = 1f;
     }
 }

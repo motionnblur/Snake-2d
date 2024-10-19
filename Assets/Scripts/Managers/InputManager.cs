@@ -20,5 +20,10 @@ public class InputManager : MonoBehaviour
         {
             EventManager.TriggerEvent("DownArrowPressed");
         }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            EventManager.TriggerEvent("OnButtonReleased");
+        }
     }
 }

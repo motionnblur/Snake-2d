@@ -50,4 +50,5 @@ public class LifetimeManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }
