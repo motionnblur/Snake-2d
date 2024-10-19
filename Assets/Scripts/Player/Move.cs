@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 public enum Direction
 {
@@ -8,6 +9,7 @@ public enum Direction
 }
 public class Move : MonoBehaviour
 {
+    public List<GameObject> tails = new List<GameObject>();
     Direction currentDirection;
 
     void Awake()
@@ -37,6 +39,8 @@ public class Move : MonoBehaviour
 
     void MoveSnake()
     {
+        UpdateTails(transform.position);
+
         if (currentDirection == Direction.Left)
         {
             transform.position += new Vector3(-0.4f, 0, 0);
@@ -94,5 +98,13 @@ public class Move : MonoBehaviour
     Direction GetRandomDirection()
     {
         return (Direction)Random.Range(0, System.Enum.GetValues(typeof(Direction)).Length);
+    }
+
+    void UpdateTails(Vector3 pos)
+    {
+        for (int i = tails.Count - 1; i >= 0; i--)
+        {
+            tails[i].transform.position = i == 0 ? pos : tails[i - 1].transform.position;
+        }
     }
 }

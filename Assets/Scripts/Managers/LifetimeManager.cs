@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LifetimeManager : MonoBehaviour
 {
+    [SerializeField] Move move;
     [SerializeField] GameObject body;
     void OnEnable()
     {
@@ -15,7 +16,8 @@ public class LifetimeManager : MonoBehaviour
 
     void OnAppleCollected(GameObject o)
     {
-        Instantiate(body, o.transform.position, Quaternion.identity);
+        GameObject newTail = Instantiate(body, o.transform.position, Quaternion.identity);
+        move.tails.Add(newTail);
         Destroy(o);
     }
 }
