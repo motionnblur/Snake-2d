@@ -31,11 +31,9 @@ public class LifetimeManager : MonoBehaviour
 
     void CloneAppleRandomly()
     {
-        GameObject _apple = Instantiate(apple, new Vector3(0f, 0f, 0f), Quaternion.identity);
-
         float randomX = Random.Range(-20, 21) * 0.4f;
         float randomY = Random.Range(-10, 11) * 0.4f;
 
-        _apple.transform.position = new Vector3(randomX, randomY, 1f);
+        Instantiate(apple, new Vector3(randomX, randomY, 1f), Quaternion.identity);
     }
 }
