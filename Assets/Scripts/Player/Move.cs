@@ -46,7 +46,7 @@ public class Move : MonoBehaviour
             transform.position += new Vector3(-0.4f, 0, 0);
             if (Mathf.Abs(transform.position.x) > 8.2f)
             {
-                Debug.Log("end");
+                EventManager.TriggerEvent("OnGameEnd");
             }
         }
         else if (currentDirection == Direction.Right)
@@ -54,7 +54,7 @@ public class Move : MonoBehaviour
             transform.position += new Vector3(0.4f, 0, 0);
             if (Mathf.Abs(transform.position.x) > 8.2f)
             {
-                Debug.Log("end");
+                EventManager.TriggerEvent("OnGameEnd");
             }
         }
         else if (currentDirection == Direction.Up)
@@ -62,7 +62,7 @@ public class Move : MonoBehaviour
             transform.position += new Vector3(0, 0.4f, 0);
             if (Mathf.Abs(transform.position.y) > 4.2f)
             {
-                Debug.Log("end");
+                EventManager.TriggerEvent("OnGameEnd");
             }
         }
         else if (currentDirection == Direction.Down)
@@ -70,7 +70,7 @@ public class Move : MonoBehaviour
             transform.position += new Vector3(0, -0.4f, 0);
             if (Mathf.Abs(transform.position.y) > 4.2f)
             {
-                Debug.Log("end");
+                EventManager.TriggerEvent("OnGameEnd");
             }
         }
     }
