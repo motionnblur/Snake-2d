@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifetimeManager : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class LifetimeManager : MonoBehaviour
     {
         EventManager.AddListener<GameObject>("OnAppleCollected", OnAppleCollected);
         EventManager.AddListener<GameObject>("OnBodyHit", OnBodyHit);
+        EventManager.AddListener("RestartGame", RestartGame);
     }
 
     void OnDisable()
     {
         EventManager.RemoveListener<GameObject>("OnAppleCollected", OnAppleCollected);
         EventManager.RemoveListener<GameObject>("OnBodyHit", OnBodyHit);
+        EventManager.RemoveListener("RestartGame", RestartGame);
     }
 
     void Start()
@@ -41,5 +44,10 @@ public class LifetimeManager : MonoBehaviour
         float randomY = Random.Range(-10, 11) * 0.4f;
 
         Instantiate(apple, new Vector3(randomX, randomY, 1f), Quaternion.identity);
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

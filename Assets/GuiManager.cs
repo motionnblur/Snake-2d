@@ -4,6 +4,7 @@ using UnityEngine;
 public class GuiManager : MonoBehaviour
 {
     [SerializeField] GameObject GameEndUi;
+    [SerializeField] GameObject RestartButtonUi;
 
     void OnEnable()
     {
@@ -20,9 +21,15 @@ public class GuiManager : MonoBehaviour
         StartCoroutine(HideGameEndUi());
     }
 
+    public void RestartGame()
+    {
+        EventManager.TriggerEvent("RestartGame");
+    }
+
     IEnumerator HideGameEndUi()
     {
         yield return new WaitForSeconds(0.6f);
         GameEndUi.SetActive(true);
+        RestartButtonUi.SetActive(true);
     }
 }
