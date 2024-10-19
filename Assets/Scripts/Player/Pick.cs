@@ -17,5 +17,9 @@ public class Pick : MonoBehaviour
         {
             EventManager.TriggerEvent("OnAppleCollected", col.gameObject);
         }
+        else if (col.CompareTag("Body"))
+        {
+            EventManager.TriggerEvent("OnBodyHit", col.gameObject);
+        }
     }
 }

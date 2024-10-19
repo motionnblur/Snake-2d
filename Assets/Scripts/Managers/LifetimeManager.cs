@@ -8,11 +8,13 @@ public class LifetimeManager : MonoBehaviour
     void OnEnable()
     {
         EventManager.AddListener<GameObject>("OnAppleCollected", OnAppleCollected);
+        EventManager.AddListener<GameObject>("OnBodyHit", OnBodyHit);
     }
 
     void OnDisable()
     {
         EventManager.RemoveListener<GameObject>("OnAppleCollected", OnAppleCollected);
+        EventManager.RemoveListener<GameObject>("OnBodyHit", OnBodyHit);
     }
 
     void Start()
@@ -27,6 +29,10 @@ public class LifetimeManager : MonoBehaviour
         Destroy(o);
 
         CloneAppleRandomly();
+    }
+    void OnBodyHit(GameObject o)
+    {
+        Debug.Log("HİT !" + o.gameObject.name);
     }
 
     void CloneAppleRandomly()
