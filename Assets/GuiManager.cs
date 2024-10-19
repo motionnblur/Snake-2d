@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GuiManager : MonoBehaviour
@@ -16,6 +17,12 @@ public class GuiManager : MonoBehaviour
 
     void OnGameEnd()
     {
+        StartCoroutine(HideGameEndUi());
+    }
+
+    IEnumerator HideGameEndUi()
+    {
+        yield return new WaitForSeconds(0.6f);
         GameEndUi.SetActive(true);
     }
 }

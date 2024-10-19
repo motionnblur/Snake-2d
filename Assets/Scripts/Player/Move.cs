@@ -28,6 +28,7 @@ public class Move : MonoBehaviour
         EventManager.AddListener("RightArrowPressed", RightArrowPressed);
         EventManager.AddListener("UpArrowPressed", UpArrowPressed);
         EventManager.AddListener("DownArrowPressed", DownArrowPressed);
+        EventManager.AddListener("OnGameEnd", OnGameEnd);
     }
     void OnDisable()
     {
@@ -35,6 +36,7 @@ public class Move : MonoBehaviour
         EventManager.RemoveListener("RightArrowPressed", RightArrowPressed);
         EventManager.RemoveListener("UpArrowPressed", UpArrowPressed);
         EventManager.RemoveListener("DownArrowPressed", DownArrowPressed);
+        EventManager.RemoveListener("OnGameEnd", OnGameEnd);
     }
 
     void MoveSnake()
@@ -106,5 +108,9 @@ public class Move : MonoBehaviour
         {
             tails[i].transform.position = i == 0 ? pos : tails[i - 1].transform.position;
         }
+    }
+    void OnGameEnd()
+    {
+        CancelInvoke("MoveSnake");
     }
 }

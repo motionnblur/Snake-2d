@@ -19,7 +19,8 @@ public class Pick : MonoBehaviour
         }
         else if (col.CompareTag("Body"))
         {
-            EventManager.TriggerEvent("OnBodyHit", col.gameObject);
+            //EventManager.TriggerEvent("OnBodyHit", col.gameObject);
+            EventManager.TriggerEvent("OnGameEnd");
         }
     }
 }
